@@ -51,8 +51,9 @@ def main():
 
     logger = get_console_info_logger()
 
-    twython = Twython(consumer_key, consumer_secret, access_token, access_token_secret)
-    twython.verify_credentials()
+    ACCESS_TOKEN = Twython(consumer_key, consumer_secret, oauth_version=2).obtain_access_token()
+    twython = Twython(consumer_key, access_token=ACCESS_TOKEN)
+
     timeline_crawler = CrawlTwitterTimelines(twython, logger)
     ff_finder = FindFriendFollowers(twython, logger)
 

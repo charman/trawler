@@ -44,8 +44,9 @@ def main():
 
     logger = get_console_info_logger()
 
-    twython = Twython(consumer_key, consumer_secret, access_token, access_token_secret)
-    twython.verify_credentials()
+    ACCESS_TOKEN = Twython(consumer_key, consumer_secret, oauth_version=2).obtain_access_token()
+    twython = Twython(consumer_key, access_token=ACCESS_TOKEN)
+
     crawler = CrawlTwitterTimelines(twython, logger)
 
     screen_names = get_screen_names_from_file(args.screen_name_file)
