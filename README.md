@@ -9,7 +9,9 @@ Twitter servers are temporarily misbehaving.
 
 Once you've created an instance of RateLimitedTwitterEndpoint, call:
 
-  endpoint.get_data(twitter_api_parameters)
+````python
+endpoint.get_data(twitter_api_parameters)
+````
 
 and get_data() will return the data from the Twitter API as soon as
 possible without violating the Twitter rate limits (and thus the
