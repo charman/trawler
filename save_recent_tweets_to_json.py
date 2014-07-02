@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 
 """
-This script downloads all available Tweets for a given list of
-usernames.
+This script downloads all "new" Tweets for a list of usernames that
+have been posted since the last time the users' feeds were crawled.
 
-The script takes as input a text file which lists one Twitter username
-per line of the file.  The script creates a [username].tweets file for
-each username specified in the directory.
+The script takes as input:
+  - a text file which lists one Twitter username per line of the file
+  - the path to the existing [username].tweets files
+  - the path where the new [username].tweets files will be stored
+
+For each username, the script opens the '[old_path]/[username].tweets'
+file, determines the most recently downloaded Tweet, and then creates
+a new '[new_path]/[username].tweets' file containing any new Tweets
+from the user.
 
 Your Twitter OAuth credentials should be stored in the file
 twitter_oauth_settings.py.
